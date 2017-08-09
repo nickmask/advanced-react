@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "pm2 start lib/serverhook.js --watch",
     "logs": "pm2 logs",
-    "kill": "pm2 kill"
+    "kill": "pm2 kill",
+    "webpack": "webpack -wd"
   },
   "babel": {
     "presets": [
@@ -25,12 +26,17 @@
   },
   "dependencies": {
     "babel-cli": "^6.24.1",
+    "babel-loader": "^7.1.1",
+    "babel-polyfill": "^6.23.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.24.1",
     "ejs": "^2.5.7",
     "express": "^4.15.4",
-    "pm2": "^2.6.1"
+    "pm2": "^2.6.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "webpack": "^3.5.1"
   }
 }
