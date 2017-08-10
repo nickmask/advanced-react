@@ -4,5 +4,7 @@
   "description": "State API",
   "main": "lib/index.js",
   "author": "Nick Maskell",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+  }
 }
