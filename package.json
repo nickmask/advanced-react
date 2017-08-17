@@ -7,45 +7,49 @@
   "author": "Nick Maskell <nrmaskell@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "cross-env NODE_PATH=./lib pm2 start lib/serverhook.js --watch",
-    "logs": "pm2 logs",
-    "kill": "pm2 kill",
+    "dev": "NODE_PATH=./lib pm2 start lib/server.js --watch --interpreter babel-node --name appDev",
     "webpack": "webpack -wd",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "verify-tests": "jest --coverage",
+    "build-webpack": "webpack -p",
+    "build-node": "babel lib -d build --copy-files",
+    "start-prod": "NODE_ENV=production NODE_PATH=./build pm2 start build/server.js -i max --name appProd"
   },
   "babel": {
     "presets": [
       "react",
-      "env",
-      "stage-2"
+      ["env", { "targets": { "node": "current" } }]
+    ],
+    "plugins": [
+      "transform-class-properties",
+      "transform-object-rest-spread"
     ]
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
     "enzyme": "^2.9.1",
-    "eslint": "^4.4.1",
-    "eslint-plugin-react": "^7.2.0",
+    "eslint": "^4.1.0",
+    "eslint-plugin-react": "^7.1.0",
     "jest": "^20.0.4",
     "react-test-renderer": "^15.6.1"
   },
   "dependencies": {
     "axios": "^0.16.2",
     "babel-cli": "^6.24.1",
-    "babel-loader": "^7.1.1",
+    "babel-loader": "^7.1.0",
     "babel-polyfill": "^6.23.0",
-    "babel-preset-env": "^1.6.0",
+    "babel-preset-env": "^1.5.2",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
-    "babel-register": "^6.24.1",
-    "cross-env": "^5.0.5",
-    "ejs": "^2.5.7",
-    "express": "^4.15.4",
+    "ejs": "^2.5.6",
+    "express": "^4.15.3",
     "lodash.debounce": "^4.0.8",
     "lodash.pickby": "^4.6.0",
-    "pm2": "^2.6.1",
+    "pm2": "^2.5.0",
+    "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-addons-perf": "^15.4.2",
     "react-dom": "^15.6.1",
-    "webpack": "^3.5.3"
+    "webpack": "^3.0.0"
   }
 }
